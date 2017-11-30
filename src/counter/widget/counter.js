@@ -108,13 +108,19 @@ define([
             }
         },
 
+        //Needed to update this._contextObj so that its not null and therefore I can call a microflow in _execMf()
+        update: function (obj, callback) {
+            logger.debug(this.id + ".update");
+            this._contextObj = obj;
+            callback();
+        },
 
         //Button Functions
         //Player 1
         incrementP1: function(){
           this._i++
           this.counterP1.innerHTML = this._i;
-
+          console.log(this._contextObj);
           // If a microflow has been set execute the microflow on a click.
           if (this.mfToExecute !== "") {
               this._execMf(this.mfToExecute, this._contextObj.getGuid());
