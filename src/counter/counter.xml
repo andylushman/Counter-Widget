@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="counter.widget.counter" needsEntityContext="true" xmlns="http://www.mendix.com/widget/1.0/">
+    <name>counter</name>
+    <description>The description of this widget.</description>
+
+    <icon />
+
+    <properties>
+      <property key="playerEntity" type="entity" required="true">
+          <caption>Objects</caption>
+          <category>Data Source</category>
+          <description>Where the player info is coming from.</description>
+      </property>
+      <property key="playerOneName" type="attribute" entityProperty="playerEntity" isPath="optional" pathType="reference">
+          <caption>Player 1</caption>
+          <category>Appearance</category>
+          <description>The name of player 1 in the widget.</description>
+          <attributeTypes>
+              <attributeType name="String" />
+          </attributeTypes>
+      </property>
+      <property key="playerTwoName" type="string" required="true" defaultValue="">
+          <caption>Player 2</caption>
+          <category>Appearance</category>
+          <description>The name of player 1 in the widget.</description>
+      </property>
+      <property key="mfToExecute" type="microflow" required="false" defaultValue="">
+          <caption>Microflow</caption>
+          <category>Behavior</category>
+          <description>The microflow to execute on click.</description>
+          <returnType type="Boolean" />
+      </property>
+    </properties>
+</widget>

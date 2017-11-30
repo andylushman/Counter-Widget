@@ -1,0 +1,54 @@
+.button {
+  padding: 10px 40px;
+  width: 300px;
+  border-radius: 25px;
+  margin-bottom: 10px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  text-align: center;
+}
+
+.buttonPlus:hover {
+  background-color: blue;
+}
+
+.buttonMinus:hover {
+  background-color: red;
+}
+
+.buttonReset:hover {
+  background-color: green;
+}
+
+.buttonPlus {
+  border: 2px solid blue;
+}
+
+.buttonMinus {
+  border: 2px solid red;
+}
+
+.buttonReset {
+  border: 2px solid green;
+}
+
+.number {
+  background: #cccccc;
+  border-radius: 50%;
+  color: #ffffff;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 3.6em;
+  margin: 15px;
+  text-align: center;
+  width: 3.6em;
+  font-size: 25px;
+}
+
+.playerTitle {
+  text-align: center;
+}
+
+.numberDiv {
+  text-align: center;
+}
