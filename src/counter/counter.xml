@@ -24,11 +24,19 @@
           <category>Appearance</category>
           <description>The name of player 1 in the widget.</description>
       </property>
+      <property key="scoreAttr" type="attribute" entityProperty="playerEntity" isPath="optional" pathType="reference">
+          <caption>Score</caption>
+          <category>Appearance</category>
+          <description>Where is the score being saved?</description>
+          <attributeTypes>
+              <attributeType name="Integer" />
+          </attributeTypes>
+      </property>
       <property key="mfToExecute" type="microflow" required="false" defaultValue="">
-          <caption>Microflow</caption>
+          <caption>Save microflow</caption>
           <category>Behavior</category>
-          <description>The microflow to execute on click.</description>
-          <returnType type="Boolean" />
+          <description>The microflow to save the entity selected.</description>
+          <returnType type="Boolean"></returnType>
       </property>
     </properties>
 </widget>
