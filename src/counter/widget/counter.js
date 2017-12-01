@@ -69,28 +69,24 @@ define([
          TEMPLATE FUNCTIONS
         ********************/
 
+        _setupEvents: function () {
+            logger.debug(this.id + "._setupEvents");
+            console.log("setupEvents function");
+        },
+
         // dojo.declare.constructor is called to construct the widget instance. Implement to initialize non-primitive properties.
         constructor: function () {
             logger.debug(this.id + ".constructor");
             this._handles = [];
+            console.log("constructor function");
         },
 
         // dijit._WidgetBase.postCreate is called after constructing the widget. Implement to do extra setup work.
         postCreate: function () {
-            logger.debug(this.id + ".postCreate");
-
+            logger.debug(this.id + ".postCreate function");
+            console.log("postCreate function");
 
             //Get Value of the playerOneName attribute
-            mx.data.get({
-            xpath: "//TestSuite.Player",
-            filter: {
-                attributes: "Name",
-                references: "Scraggy"
-            },
-            callback: function(objs) {
-                console.log("Received " + objs.length + " MxObjects");
-            }
-            });
 
             //Putting a string message into the dom
             dojoHtml.set(this.playerOneNameNode, this.playerOneName);
@@ -106,8 +102,18 @@ define([
         //Needed to update this._contextObj so that its not null and therefore I can call a microflow in _execMf()
         update: function (obj, callback) {
             logger.debug(this.id + ".update");
+            console.log("Update function");
             this._contextObj = obj;
             callback();
+
+            mx.data.get({
+              guid: this._contextObj.getGuid(),
+              callback: function(obj) {
+                var playerName = obj.jsonData.attributes.Name.value;
+                console.log(obj);
+                console.log(playerName);
+              }
+            });
         },
 
         _execMf: function (mf, guid, cb) {
