@@ -105,17 +105,19 @@ define([
             console.log("Update function");
             this._contextObj = obj;
             callback();
+            this.setName()
 
-            mx.data.get({
-              guid: this._contextObj.getGuid(),
-              callback: function(obj) {
-                var player = obj.jsonData.attributes.Name.value;
-                console.log(obj);
-                dojoHtml.set("playerOne", player);
-              }
-            });
+        },
 
-
+        setName: function (){
+          mx.data.get({
+            guid: this._contextObj.getGuid(),
+            callback: function(obj) {
+              var player = obj.jsonData.attributes.Name.value;
+              console.log(obj);
+              dojoHtml.set("playerOne", player);
+            }
+          });
         },
 
         _execMf: function (mf, guguloid, cb) {
