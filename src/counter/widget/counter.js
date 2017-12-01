@@ -47,12 +47,12 @@ define([
         templateString: widgetTemplate,
 
         // DOM elements
-        _i: 0,
-        _i2: 0,
-        //Listed as a reminder not needed.
+        //Listed as a reminder for data-dojo-attach-points. Not needed.
         playerOneNameNode: null,
         playerTwoNameNode: null,
-
+        //Used for counters
+        _i: 0,
+        _i2: 0,
 
         // Parameters configured in the Modeler. Listed for a reminder not needed.
         playerOneName: "",
@@ -64,6 +64,11 @@ define([
           _contextObj: null,
 
 
+
+        /********************
+         TEMPLATE FUNCTIONS
+        ********************/
+
         // dojo.declare.constructor is called to construct the widget instance. Implement to initialize non-primitive properties.
         constructor: function () {
             logger.debug(this.id + ".constructor");
@@ -74,6 +79,19 @@ define([
         postCreate: function () {
             logger.debug(this.id + ".postCreate");
 
+
+            //Get Value of the playerOneName attribute
+            mx.data.get({
+            xpath: "//TestSuite.Player",
+            filter: {
+                attributes: "Name",
+                references: "Scraggy"
+            },
+            callback: function(objs) {
+                console.log("Received " + objs.length + " MxObjects");
+            }
+            });
+
             //Putting a string message into the dom
             dojoHtml.set(this.playerOneNameNode, this.playerOneName);
             dojoHtml.set(this.playerTwoNameNode, this.playerTwoName);
@@ -83,9 +101,13 @@ define([
             // dojoStyle.set(this.counter, {
             //   "background-color": "blue"
             // });
+        },
 
-            // If a microflow has been set execute the microflow on a click.
-
+        //Needed to update this._contextObj so that its not null and therefore I can call a microflow in _execMf()
+        update: function (obj, callback) {
+            logger.debug(this.id + ".update");
+            this._contextObj = obj;
+            callback();
         },
 
         _execMf: function (mf, guid, cb) {
@@ -108,24 +130,22 @@ define([
             }
         },
 
-        //Needed to update this._contextObj so that its not null and therefore I can call a microflow in _execMf()
-        update: function (obj, callback) {
-            logger.debug(this.id + ".update");
-            this._contextObj = obj;
-            callback();
-        },
 
-        //Button Functions
+
+      /********************
+         BUTTON FUNCTIONS  Listed in HTML as data-dojo-attach-event
+      ********************/
+
         //Player 1
         incrementP1: function(){
           this._i++
           this.counterP1.innerHTML = this._i;
+
           console.log(this._contextObj);
           // If a microflow has been set execute the microflow on a click.
           if (this.mfToExecute !== "") {
               this._execMf(this.mfToExecute, this._contextObj.getGuid());
           }
-
         },
 
         decrementP1: function () {
