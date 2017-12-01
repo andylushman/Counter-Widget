@@ -11,7 +11,7 @@
           <category>Data Source</category>
           <description>Where the player info is coming from.</description>
       </property>
-      <property key="playerOneName" type="attribute" entityProperty="playerEntity" isPath="optional" pathType="reference">
+      <property key="playerOneName" type="attribute" required="false" entityProperty="playerEntity" isPath="optional" pathType="reference">
           <caption>Player 1</caption>
           <category>Appearance</category>
           <description>The name of player 1 in the widget.</description>

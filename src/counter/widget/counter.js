@@ -109,14 +109,16 @@ define([
             mx.data.get({
               guid: this._contextObj.getGuid(),
               callback: function(obj) {
-                var playerName = obj.jsonData.attributes.Name.value;
+                var player = obj.jsonData.attributes.Name.value;
                 console.log(obj);
-                console.log(playerName);
+                dojoHtml.set("playerOne", player);
               }
             });
+
+
         },
 
-        _execMf: function (mf, guid, cb) {
+        _execMf: function (mf, guguloid, cb) {
             logger.debug(this.id + "._execMf");
             if (mf && guid) {
                 mx.ui.action(mf, {
