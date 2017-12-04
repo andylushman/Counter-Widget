@@ -90,7 +90,7 @@ define([
 
             //Putting a string message into the dom
             dojoHtml.set(this.playerOneNameNode, this.playerOneName);
-            dojoHtml.set(this.playerTwoNameNode, this.playerTwoName);
+            // dojoHtml.set(this.playerTwoNameNode, this.playerTwoName);
 
 
             //Putting style on a dom onject
