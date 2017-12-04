@@ -120,7 +120,7 @@ define([
           });
         },
 
-        _execMf: function (mf, guguloid, cb) {
+        _execMf: function (mf, guid, cb) {
             logger.debug(this.id + "._execMf");
             if (mf && guid) {
                 mx.ui.action(mf, {
@@ -151,11 +151,7 @@ define([
           this._i++
           this.counterP1.innerHTML = this._i;
 
-          console.log(this._contextObj);
-          // If a microflow has been set execute the microflow on a click.
-          if (this.mfToExecute !== "") {
-              this._execMf(this.mfToExecute, this._contextObj.getGuid());
-          }
+          this.increaseMendixScore();
         },
 
         decrementP1: function () {
@@ -182,6 +178,13 @@ define([
         resetP2: function(){
           this._i2 = 0;
           this.counterP2.innerHTML = this._i2;
+        },
+
+        increaseMendixScore: function (){
+          // If a microflow has been set execute the microflow on a click.
+          if (this.mfToExecute !== "") {
+              this._execMf(this.mfToExecute, this._contextObj.getGuid());
+          }
         }
 
     });
